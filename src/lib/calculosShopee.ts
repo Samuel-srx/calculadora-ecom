@@ -19,6 +19,8 @@ export type CalculoShopeeParams = {
 
   kitAtivo: boolean;
   quantidadeKit: number;
+
+  cpfMaisDe450Pedidos: boolean;
 };
 
 function valorSeguro(valor: number, fallback = 0) {
@@ -39,13 +41,13 @@ export function calcularShopee(p: CalculoShopeeParams) {
 
   const margemDesejada = valorSeguro(p.margemDesejada) / 100;
   const impostoPercentual = valorSeguro(p.imposto) / 100;
-  const roasSeguro = p.roas > 0 ? p.roas : 1;
+  const roasSeguro = valorSeguro(p.roas) > 0 ? valorSeguro(p.roas) : 1;
 
   const comissaoPercentual = 0.14;
-  const taxaFixaShopee = 20;
+  const taxaFixaShopee = 26;
 
   const taxaExtraCPF =
-    p.tipoVendedor === "CPF" && valorSeguro(p.vendasMes) > 150 ? 3 : 0;
+    p.tipoVendedor === "CPF" && p.cpfMaisDe450Pedidos ? 3 : 0;
 
   const custoFixoTotal = custoBase + taxaFixaShopee + taxaExtraCPF;
 
