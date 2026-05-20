@@ -932,7 +932,7 @@ Lucro líquido mensal: ${moeda(resultado.lucroMensal)}
                     <div className="space-y-2 border-t border-gray-200 bg-white px-4 py-3">
                       <div className="flex items-center justify-between rounded-xl bg-gray-50 px-3 py-2 text-sm">
                         <span className="text-gray-600">
-                          Comissão Shopee (14%)
+                          Comissão Shopee (20%)
                         </span>
                         <strong className="text-gray-900">
                           {moeda(resultado.comissaoValor)}

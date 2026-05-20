@@ -43,8 +43,14 @@ export function calcularShopee(p: CalculoShopeeParams) {
   const impostoPercentual = valorSeguro(p.imposto) / 100;
   const roasSeguro = valorSeguro(p.roas) > 0 ? valorSeguro(p.roas) : 1;
 
-  const comissaoPercentual = 0.14;
-  const taxaFixaShopee = 26;
+  const comissaoPercentual = 0.20;
+
+const taxaFixaShopee =
+  p.tipoVendedor === "CPF"
+    ? p.cpfMaisDe450Pedidos
+      ? 4
+      : 7
+    : 4;
 
   const taxaExtraCPF =
     p.tipoVendedor === "CPF" && p.cpfMaisDe450Pedidos ? 3 : 0;
