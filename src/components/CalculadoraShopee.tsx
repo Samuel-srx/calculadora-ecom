@@ -142,6 +142,7 @@ function Campo({
 
         <input
           type="number"
+          autoComplete="off"
           value={Number.isNaN(value) ? "" : value}
           onChange={(e) => {
             const valorDigitado = e.target.value;
@@ -419,17 +420,17 @@ export default function CalculadoraShopee() {
   const primeiraRenderizacao = useRef(true);
 
   const [form, setForm] = useState<FormState>({
-    custoProduto: 59.9,
-    custoEmbalagem: 1.3,
-    margemDesejada: 25,
-    precoVenda: 170.2,
-    lucroDesejado: 40,
-    imposto: 15,
-    roas: 13,
-    precoMercado: 58,
-    vendasMes: 64,
-    quantidadeKit: 2,
-  });
+  custoProduto: Number.NaN,
+  custoEmbalagem: Number.NaN,
+  margemDesejada: Number.NaN,
+  precoVenda: Number.NaN,
+  lucroDesejado: Number.NaN,
+  imposto: Number.NaN,
+  roas: Number.NaN,
+  precoMercado: Number.NaN,
+  vendasMes: Number.NaN,
+  quantidadeKit: 1,
+});
 
   const resultado = useMemo(() => {
     return calcularShopee({
